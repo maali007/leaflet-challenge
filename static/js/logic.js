@@ -10,3 +10,13 @@ var mbLayer = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
 
 // Step 2: Create earthquake layerGroup
 var eQuakes = L.layerGroup();
+
+// Step 3: Create a grayscale map and centered and zoomed in to US
+var eqMap = L.map("mapid", {
+    center: [
+      39.50, -98.35
+    ],
+    zoom: 4,
+    layers: [mbLayer, eQuakes]
+  });
+  
