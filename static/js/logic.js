@@ -43,4 +43,25 @@ d3.json(eQuakesURL, function(eQuakesInfo) {
     }
   }
 
+  // Step 6: Create a GeoJSON layer with the features array
+  L.geoJSON(eQuakesInfo, {
+    pointToLayer: function (feature, latlng) {
+      return L.circleMarker(latlng, 
+        // Marker styling using magnitude for size (properties.mag) and depth for color (coordinates[2])
+        // Magnitude multiplied by 3 for resizing (make bigger).
+        {
+          radius: (feature.properties.mag)*3,
+          fillColor: chooseColor(feature.geometry.coordinates[2]),
+          fillOpacity: 0.75,
+          color: "#000000",
+          stroke: true,
+          weight: 0.5
+        }
+      );
+    }
+  }).addTo(eQuakes);
+  // Pass layer to the createMap function
+  eQuakes.addTo(eqMap);
+
+
 });
