@@ -1,4 +1,4 @@
-//Step 1: Create the tile layer that will be the background of our map
+// Step 1: Create the tile layer that will be the background of our map
 var mbLayer = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
   tileSize: 512,
@@ -7,3 +7,6 @@ var mbLayer = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
   id: "mapbox/light-v10",
   accessToken: API_KEY
 });
+
+// Step 2: Create earthquake layerGroup
+var eQuakes = L.layerGroup();
