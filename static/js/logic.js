@@ -58,6 +58,11 @@ d3.json(eQuakesURL, function(eQuakesInfo) {
           weight: 0.5
         }
       );
+    },
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("<h3>Location: " + feature.properties.place + "</h3><hr><p>Date: "
+      + new Date(feature.properties.time) + "</p><hr><p>Magnitude: "
+      + feature.properties.mag + "</p><hr><p>Depth: " + feature.geometry.coordinates[2] +"</p>");
     }
   }).addTo(eQuakes);
   // Pass layer to the createMap function
