@@ -20,3 +20,27 @@ var eqMap = L.map("mapid", {
     layers: [mbLayer, eQuakes]
   });
   
+// Step 4: Specify earthquakes data url variable (I chose 2.5+ magnitude/week)
+var eQuakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson";
+
+// Step 5: Grab the data with d3
+d3.json(eQuakesURL, function(eQuakesInfo) {
+  // Use depth for marker colors
+  function chooseColor(depth) {
+    switch(true) {
+      case depth > 90:
+        return "#ff5f65";
+      case depth > 70:
+        return "#fca35d";
+      case depth > 50:
+        return "#fdb73a";
+      case depth > 30:
+        return "#f6db40";
+      case depth > 10:
+        return "#dcf443";
+      default:
+        return "#a3f63e";
+    }
+  }
+
+});
